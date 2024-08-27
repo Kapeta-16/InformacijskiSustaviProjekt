@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graf</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="prvi">
+                <li><a href="{{ url_for('home')}}">Home</a></li>
+                <li><a href="{{ url_for('unos_trening')}}">Unos Treninga</a></li>
+                <li><a href="{{ url_for('pregled_treninge')}}">Pregled Treninga</a></li>
+                <li><a href="{{ url_for('graf')}}">Graf</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1 class="naslov">Graf treninga</h1>
+
+        <div><canvas id="mojGraf" width="300" height="100"></canvas></div>
+
+        <script>
+        var x_axis = {{ x_axis|safe }};
+        var y_axis = {{ y_axis|safe }};
+
+
+        var formatted_x_axis = x_axis.map(function(month) {
+            return moment(month, 'M').format('MMM');
+        });
+
+        var data = {
+            labels: formatted_x_axis,
+            datasets: [{
+                label: "Broj treninga po mjesecima",
+                backgroundColor: "#082696",
+                borderColor: "#082696",
+                data: y_axis
+            }]
+        };
+
+        var config = {
+            type: "bar",
+            data: data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1,
+                            precision: 0
+                        },
+                        title: {
+                            display: true,
+                            text: 'Broj treninga'
+                        }
+                    }
+                }
+            }
+        };
+
+        var ctx = document.getElementById("mojGraf").getContext('2d');
+        var chart = new Chart(ctx, config);
+    </script>
+    </main>
+    <footer>
+        <p1>&copy; 2024 Web Stranica Mateo Šegon</p1>
+    </footer>
+
+
+
+</body>
+</html>

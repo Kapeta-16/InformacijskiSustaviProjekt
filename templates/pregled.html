@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregled treninga</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="prvi">
+                <li><a href="{{ url_for('home')}}">Home</a></li>
+                <li><a href="{{ url_for('unos_trening')}}">Unos Treninga</a></li>
+                <li><a href="{{ url_for('pregled_treninge')}}">Pregled Treninga</a></li>
+                <li><a href="{{ url_for('graf')}}">Graf</a></li>
+            </ul>
+        </nav>
+    </header>
+     <main>
+        <h1 class="naslov">Treninzi</h1>
+
+
+        {% for trening in data %}
+         <div class="pregled_tr" >
+             <strong>{{ trening.datum_tr.strftime('%d-%m-%Y') }}</strong>
+                <br>
+                <small>
+                    Otplivana daljina: {{ trening.otplivana_daljina }} <br>
+                    Vrijeme: {{ trening.vrijeme }} <br>
+                    Datum: {% if trening.datum_tr %} {{ trening.datum_tr.strftime('%d-%m-%Y %H:%M') }} {% else %} None {% endif %}<br>
+                    Detalji: {{ trening.detalji }} <br>
+                </small>
+
+             <a href="{{ url_for('uredi_trening', trening_id=trening.id) }}" class="btn_uredi" >Uredi</a>
+             <button onclick="obrisiTrening('{{ trening.id }}')" class="btn_obrisi">Obriši</button>
+              </div>
+
+         <br><br>
+         {% endfor %}
+    </main>
+
+    <footer>
+        <p1>&copy; 2024 Web Stranica Mateo Šegon</p1>
+    </footer>
+    <script>
+       function obrisiTrening(treningId) {
+          if (confirm('Želite li obrisati ovaj trening?')) {
+            fetch(`/trening/${treningId}`, { method: 'DELETE' })
+              .then(response => response.json())
+              .then(data => {
+                if (data.response === 'Success') {
+                  location.reload();
+                } else {
+                  console.error('Došlo je do greške:', data.error);
+                }
+              })
+              .catch(error => console.error('Došlo je do greške prilikom izvršavanja DELETE zahteva:', error));
+          }
+        }
+
+    </script>
+</body>
+</html>

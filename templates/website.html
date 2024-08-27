@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <main style="background-image: url('https://wallpapercave.com/wp/wp2046110.jpg');">
+        <h1 class="sub-text">Praćenje plivačkih treninga</h1></br></br>
+        <p2>Ovdje možete pratiti svoje plivačke trenige</p2>
+        <header>
+            </br></br></br>
+        <nav>
+            <ul class="drugi">
+                <li><a href="{{ url_for('unos_trening')}}">Unos Treninga</a></li></br>
+                <li><a href="{{ url_for('pregled_treninge')}}">Pregled Treninga</a></li></br>
+                <li><a href="{{ url_for('graf')}}">Graf</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    </main>
+    <footer>
+        <p1>&copy; 2024 Web Stranica Mateo Šegon</p1>
+    </footer>
+</body>
+</html>

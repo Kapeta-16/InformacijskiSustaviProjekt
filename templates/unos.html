@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unos podataka</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+     <nav>
+         <ul class="prvi">
+            <li><a href="{{ url_for('home')}}">Home</a></li>
+            <li><a href="{{ url_for('unos_trening')}}">Unos Treninga</a></li>
+            <li><a href="{{ url_for('pregled_treninge')}}">Pregled Treninga</a></li>
+            <li><a href="{{ url_for('graf')}}">Graf</a></li>
+        </ul>
+    </nav>
+</header>
+    <main>
+        <h1 class="naslov">Unos</h1>
+        <div class="swim-form">
+        <h2>Unosenje podataka</h2>
+        <form action="#" method="post" id="swim-form">
+            <label for="otplivana_daljina" class="form-label">Otplivana daljina (u metrima):</label>
+            <input type="number" id="otplivana_daljina" name="otplivana_daljina"  required><br><br>
+
+
+            <label for="vrijeme" class="form-label">Trajanje treninga:</label>
+            <input type="text"  id="vrijeme" name="vrijeme" placeholder="00:00" required><br><br>
+
+
+            <label for="datum_tr" class="form-label">Datum:</label>
+            <input type="date" id="datum_tr" name="datum_tr" required><br><br>
+
+
+            <label for="detalji" class="form-label">Detalji:</label>
+            <textarea  id="detalji" name="detalji" rows="5" style="width: 50%;"></textarea><br><br>
+            
+            <button type="submit" onclick="alert(Dodano)" class="btn btn-alert btn-sm" id="btn_dodaj">Dodaj</button>
+        </form>
+        </div>
+
+    </main>
+
+
+    <footer>
+        <p1>&copy; 2024 Web Stranica Mateo Šegon</p1>
+    </footer>
+</body>
+</html>

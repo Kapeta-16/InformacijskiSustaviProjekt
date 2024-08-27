@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uredi Trening</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="drugi">
+                <li><a href="{{ url_for('home')}}">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1 class="naslov">Edit Trening</h1>
+
+        <div class="swim-form">
+
+            <form action="/trening/uredi/{{ data['id'] }}" method="POST" id="swim-form">
+                    <label for="otplivana_daljina" class="form-label">Otplivana daljina (u metrima):</label>
+                    <input type="number" id="otplivana_daljina" name="otplivana_daljina"  required><br><br>
+
+
+                    <label for="vrijeme" class="form-label">Trajanje treninga:</label>
+                    <input type="text"  id="vrijeme" name="vrijeme" placeholder="00:00" required><br><br>
+
+
+                    <label for="datum_tr" class="form-label">Datum:</label>
+                    <input type="date" id="datum_tr" name="datum_tr" required><br><br>
+
+
+                    <label for="detalji" class="form-label">Detalji:</label>
+                    <textarea  id="detalji" name="detalji" rows="5" style="width: 50%;"></textarea><br><br>
+
+                    <input type="submit" value="Update" class="btn_update">
+            </form>
+        </div>
+    </main>
+</body>
+</html>
