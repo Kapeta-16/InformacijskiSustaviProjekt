@@ -1,1 +1,1 @@
-# InformacijskiSustaviProjekt
+# Praćenje plivačkih treninga
