@@ -21,8 +21,8 @@ Za projekt je koristen Python uz pomoc Flask framework-a za izraditi backend Web
 # Preuzimanje koda
 
 ```
-cd ~/Downloads git clone
-https://github.com/Kapeta-16/InformacijskiSustaviProjekt
+cd ~/Downloads
+git clone https://github.com/Kapeta-16/InformacijskiSustaviProjekt
 cd InformacijskiSustaviProjekt
 ```
 
