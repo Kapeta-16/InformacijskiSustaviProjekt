@@ -18,12 +18,23 @@ Za projekt je koristen Python uz pomoc Flask framework-a za izraditi backend Web
 
 **Pregled treninga:** korisnik moze vidjeti sve treninge koje je do sada unjeo
 
-# Docker pokretanje 
+# Preuzimanje koda
+
+```
+cd ~/Downloads git clone
+https://github.com/Kapeta-16/InformacijskiSustaviProjekt
+cd InformacijskiSustaviProjekt
+```
+
+# Docker pokretanje
 Nakon preuzimanja koda potrebno je koristiti slijedeće instrukcije
 
+# Kroz Pycharm
 ***Kreacija Image-a u Docker-u***
 
-``` docker build --tag ime:verzija```
+``` 
+docker build --tag ime:verzija
+```
 
 primjer:
 
@@ -33,5 +44,13 @@ verzija- 1.0
 
 ***Prvo pokretanje i kreacija Container-a u Docker-u***
 
-``` docker run 5001:8080 treninzi:1.0 ```
+``` 
+docker run 5001:8080 treninzi:1.0
+```
 
+# Kroz Command Prompt
+```
+docker build -t treninzi .
+docker ps
+docker run -p 5001:8080 treninzi
+```
